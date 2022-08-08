@@ -14,8 +14,8 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  late String email;
-  late String password;
+  String email = '';
+  String password = '';
   AuthBase authBase = AuthBase();
   //String _email = '', _password = '';
   @override
@@ -64,8 +64,15 @@ class _LoginFormState extends State<LoginForm> {
                 text: 'دخول',
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                     authBase.loginWithEmailAndPassword(email, password);
-                     Navigator.of(context).pushNamed('home');
+                    try {
+                      authBase.loginWithEmailAndPassword(email, password);
+                      Navigator.of(context).pushNamed('home');
+                    } catch (e) {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              "خطأ لايوجد مستخدم بهذا الايميل الرجاء تسجيل حساب جديد"),
+                          duration: Duration(seconds: 2)));
+                    }
                   }
                 },
                 textColor: Colors.white,

@@ -2,20 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:teachers/widgets/login_form.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:teachers/widgets/search_form.dart';
+
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key ,}) : super(key: key);
+  const LoginScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
                 Container(
                   height: MediaQuery.of(context).size.height * 0.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),
@@ -25,8 +29,8 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Column(
                   children: <Widget>[
-                    SizedBox(height: 40),
-                    Text(
+                    const SizedBox(height: 40),
+                    const Text(
                       'Welcome!',
                       style: TextStyle(
                         color: Colors.white,
