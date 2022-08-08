@@ -6,8 +6,14 @@ import 'package:teachers/teacher/login_screen.dart';
 import 'package:teachers/teacher/register_screen.dart';
 import 'intro_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -21,13 +27,6 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-
-
-
-
-
-
-
       supportedLocales: [
         Locale('ar', 'AE'), // English, no country code
       ],
@@ -64,7 +63,8 @@ class MyApp extends StatelessWidget {
         'register': (context) => RegisterScreen(),
         'complete_reg': (context) => CompleteTheRegistration(),
         'home': (context) => HomePage(),
-       // 'ssss' : (context) => HomePage()
+
+        // 'ssss' : (context) => HomePage()
       },
     );
   }
