@@ -28,7 +28,7 @@ class _RegisterFormState extends State<RegisterForm> {
   late String about_teacher;
   late String name;
   late String email;
-  late int phone;
+  late String phone;
   late String password;
   late String password2;
   final _formKey = GlobalKey<FormState>();
@@ -38,214 +38,209 @@ class _RegisterFormState extends State<RegisterForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 30,
-          ),
-          TextFormField(
-            onChanged: (value) => name = value,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'ادخل اسمك الكامل';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              labelText: 'الاسم الكامل',
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 30,
             ),
-            //obscureText: true,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          TextFormField(
-            onChanged: (value) => email = value,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'ادخل بريد الكتروني صالح';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-                labelText: 'البريد الالكتروني', hintText: 'ex: test@gmail.com'),
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          TextFormField(
-            onChanged: (value) => phone = value as int,
-            validator: (value) {
-              if (value == null || value.length == 9) {
-                return 'ادخل ارقام هاتف مكونة من 9 ارقام ';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              labelText: 'رقم الهاتف',
+            TextFormField(
+              onChanged: (value) => name = value,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'ادخل اسمك الكامل';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                labelText: 'الاسم الكامل',
+              ),
+              //obscureText: true,
             ),
-            //obscureText: true,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Text(
-            'التخصص:',
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.black,
+            SizedBox(
+              height: 16,
             ),
-          ),
-          DropdownButton<String>(
-            dropdownColor: Colors.white,
-            focusColor: Colors.white,
-            value: subject,
-            iconSize: 30,
-            icon: Icon(
-              Icons.arrow_drop_down,
-              color: Colors.black54,
+            TextFormField(
+              onChanged: (value) => email = value,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'ادخل بريد الكتروني صالح';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                  labelText: 'البريد الالكتروني',
+                  hintText: 'ex: test@gmail.com'),
             ),
-            isExpanded: true,
-            items: items
-                .map((String item) => DropdownMenuItem(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ))
-                .toList(),
-            onChanged: (value) => setState(() => this.subject = value),
-          ),
-          Text(
-            'الجنس:',
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.black,
+            SizedBox(
+              height: 16,
             ),
-          ),
-          DropdownButton<String>(
-            dropdownColor: Colors.grey,
-            focusColor: Colors.black54,
-            value: gender,
-            iconSize: 30,
-            icon: Icon(
-              Icons.arrow_drop_down,
-              color: Colors.black54,
+            TextFormField(
+              onChanged: (value) => phone = value,
+              validator: (value) {
+                if (value == null || value.length == 9) {
+                  return 'ادخل ارقام هاتف مكونة من 9 ارقام ';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                labelText: 'رقم الهاتف',
+              ),
+              //obscureText: true,
             ),
-            isExpanded: true,
-            items: items1
-                .map((String item) => DropdownMenuItem(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 22),
-                      ),
-                    ))
-                .toList(),
-            onChanged: (value) => setState(() => this.gender = value),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            ' العنوان:',
-            style: TextStyle(fontSize: 22, color: Colors.black),
-          ),
-          TextFormField(
-            onChanged: (value) => address = value,
-            decoration: InputDecoration(
-              labelText: 'العنوان',
+            SizedBox(
+              height: 16,
             ),
-            //obscureText: true,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            'نبذة عن المعلم:',
-            style: TextStyle(fontSize: 22, color: Colors.black),
-          ),
-          TextFormField(
-            onChanged: (value) => about_teacher = value,
-            decoration: InputDecoration(
-              labelText: 'نبذة عن المعلم',
+            SizedBox(
+              height: 16,
             ),
-            // obscureText: true,
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          TextFormField(
-            onChanged: (value) => password = value,
-            validator: (value) {
-              if (value == null || value.length < 6) {
-                return 'ادخل كلمة مرور لا تقل عن 6 احرف';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              labelText: 'كلمة المرور',
+            Text(
+              'التخصص:',
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.black,
+              ),
             ),
-            obscureText: true,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          TextFormField(
-            onChanged: (value) => password2 = value,
-            validator: (value) {
-              if (value == null || value.length < 6 || value != password) {
-                return 'كلمة المرور غير متطابقة';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              labelText: 'تاكيد كلمة المرور',
+            DropdownButton<String>(
+              dropdownColor: Colors.white,
+              focusColor: Colors.white,
+              value: subject,
+              iconSize: 30,
+              icon: Icon(
+                Icons.arrow_drop_down,
+                color: Colors.black54,
+              ),
+              isExpanded: true,
+              items: items
+                  .map((String item) => DropdownMenuItem(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                      ))
+                  .toList(),
+              onChanged: (value) => setState(() => this.subject = value),
             ),
-            obscureText: true,
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          OriginalButton(
-            text: 'تسجيل',
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                authBase
-                    .registerWithNameAndEmailAndPhoneAndPasswordAndSubjectAndGenderAndAddressAndAbout_Teacher(
-                        name,
-                        email,
-                        phone,
-                        password,
-                        subject,
-                        gender,
-                        address,
-                        about_teacher);
-                // Navigator.of(context).pushNamed('home');
-              }
-            },
-            textColor: Colors.white,
-            bgColor: Colors.blueAccent,
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          FlatButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('login');
-            },
-            child: Text(
-              'لدي حساب باالفعل!',
-              style: TextStyle(color: Colors.black54, fontSize: 18),
+            Text(
+              'الجنس:',
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.black,
+              ),
             ),
-          ),
-        ],
+            DropdownButton<String>(
+              dropdownColor: Colors.grey,
+              focusColor: Colors.black54,
+              value: gender,
+              iconSize: 30,
+              icon: Icon(
+                Icons.arrow_drop_down,
+                color: Colors.black54,
+              ),
+              isExpanded: true,
+              items: items1
+                  .map((String item) => DropdownMenuItem(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22),
+                        ),
+                      ))
+                  .toList(),
+              onChanged: (value) => setState(() => this.gender = value),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              ' العنوان:',
+              style: TextStyle(fontSize: 22, color: Colors.black),
+            ),
+            TextFormField(
+              onChanged: (value) => address = value,
+              decoration: InputDecoration(
+                labelText: 'العنوان',
+              ),
+              //obscureText: true,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'نبذة عن المعلم:',
+              style: TextStyle(fontSize: 22, color: Colors.black),
+            ),
+            TextFormField(
+              onChanged: (value) => about_teacher = value,
+              decoration: InputDecoration(
+                labelText: 'نبذة عن المعلم',
+              ),
+              // obscureText: true,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              onChanged: (value) => password = value,
+              validator: (value) {
+                if (value == null || value.length < 6) {
+                  return 'ادخل كلمة مرور لا تقل عن 6 احرف';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                labelText: 'كلمة المرور',
+              ),
+              obscureText: true,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            TextFormField(
+              onChanged: (value) => password2 = value,
+              validator: (value) {
+                if (value == null || value.length < 6 || value != password) {
+                  return 'كلمة المرور غير متطابقة';
+                }
+                return null;
+              },
+              decoration: InputDecoration(
+                labelText: 'تاكيد كلمة المرور',
+              ),
+              obscureText: true,
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            OriginalButton(
+              text: 'تسجيل',
+              onPressed: () async {
+                var us = await authBase.register(name, email, phone, password,
+                    subject, gender, address, about_teacher);
+                print(us);
+                Navigator.of(context).pushNamed('home');
+              },
+              textColor: Colors.white,
+              bgColor: Colors.blueAccent,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            FlatButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('login');
+              },
+              child: Text(
+                'لدي حساب باالفعل!',
+                style: TextStyle(color: Colors.black54, fontSize: 18),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
