@@ -68,10 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                       authBase.loginWithEmailAndPassword(email, password);
                       Navigator.of(context).pushNamed('home');
                     } catch (e) {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                          content: Text(
-                              "خطأ لايوجد مستخدم بهذا الايميل الرجاء تسجيل حساب جديد"),
-                          duration: Duration(seconds: 2)));
+                      // show error message to the user
                     }
                   }
                 },
