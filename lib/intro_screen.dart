@@ -11,7 +11,7 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5), () {
-      Navigator.of(context).pushNamed('home');
+      Navigator.of(context).pushNamed('login');
     });
 
     super.initState();
@@ -29,13 +29,16 @@ class _IntroScreenState extends State<IntroScreen> {
               children: <Widget>[
                 SizedBox(),
                 Image.asset('assets/images/logo.png'),
-                SizedBox(height: 10,),
-                Text('مرحبا بكم',
-                style: TextStyle(
-                  fontSize: 28,
-                  color: Colors.white
-                ),),
-                SizedBox(height: 130,),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'مرحبا بكم',
+                  style: TextStyle(fontSize: 28, color: Colors.white),
+                ),
+                SizedBox(
+                  height: 130,
+                ),
               ],
             ),
           ),
@@ -44,4 +47,3 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 }
-
