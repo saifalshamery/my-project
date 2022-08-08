@@ -14,27 +14,29 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Teacher',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('ar', 'AE'), // English, no country code
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue,
         textTheme: TextTheme(
-            headline1: TextStyle(
+            headline1: const TextStyle(
                 fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
             headline2: TextStyle(
                 fontSize: 22,
@@ -42,27 +44,27 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold),
             headline3:
                 TextStyle(fontSize: 20, color: Colors.white.withAlpha(140)),
-            headline4: TextStyle(fontSize: 16)),
+            headline4: const TextStyle(fontSize: 16)),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Colors.grey[200],
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(25)),
           disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(25)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(25)),
         ),
       ),
-      home: IntroScreen(),
+      home: const IntroScreen(),
       routes: {
-        'login': (context) => LoginScreen(),
+        'login': (context) => const LoginScreen(),
         'register': (context) => RegisterScreen(),
-        'complete_reg': (context) => CompleteTheRegistration(),
-        'home': (context) => HomePage(),
+        'complete_reg': (context) => const CompleteTheRegistration(),
+        'home': (context) => const HomePage(),
 
         // 'ssss' : (context) => HomePage()
       },
